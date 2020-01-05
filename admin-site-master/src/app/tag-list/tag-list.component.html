@@ -1,0 +1,81 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Tags</h2>
+
+    <p>
+        <button class="btn btn-lg btn-primary mr-1" type="button" data-toggle="collapse" 
+                data-target="#collapseTag" aria-expanded="false" aria-controls="collapseTag"
+                (click)="clearTag()">
+            Add Tag
+        </button>
+    </p>
+
+    <div id="collapseTag" class="collapse p-2 mb-2 border rounded">
+        <div class="form-group row">
+            <label for="inputName" class="col-auto col-form-label">Name</label>
+            <div class="col-sm-2">
+                <input id="inputName" name="inputName" class="form-control" type="text" 
+                       [(ngModel)]="newTag.name">
+            </div> 
+            <div class="col-sm-2">
+                <button class="btn btn-success" type="button" (click)="addTag()" 
+                        [disabled]="isAddingTag">
+                    Add
+                    <span *ngIf="isAddingTag" class="spinner-border spinner-border-sm mb-1"></span>
+                </button>
+            </div>
+        </div>
+        <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')"
+             role="alert" (click)="message=''">
+            {{ message }}
+        </div>
+    </div>
+
+    <table id="tags" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 10%">ID</th>
+                <th class="text-center" style="width: 60%">Name</th>
+                <th class="text-center" style="width: 30%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let t of allTags">
+                <tr *ngIf="!getSelectedTag(t.id)">
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.name }}</td>
+                    <td>
+                        <button class="btn btn-primary" type="button" (click)="edit(t)">
+                            Edit
+                        </button>
+
+                        <div *ngIf="messageMap.getMessage(t.id) as msg" 
+                             [className]="'alert ' + (messageMap.getSuccess(t.id) ? 'alert-success' : 'alert-danger')"
+                             role="alert" (click)="messageMap.clearMessage(t.id)">
+                            {{ msg }}
+                        </div>
+                    </td>
+                </tr>
+
+                <tr *ngIf="getSelectedTag(t.id) as selTag">
+                    <td>{{ t.id }}</td>
+                    <td>
+                        <input class="form-control" type="text" [(ngModel)]="selTag.name">
+                    </td>
+                    <td>
+                        <button class="btn btn-success m-1" type="button" (click)="save(selTag)"
+                                [disabled]="getIsSaving(selTag.id)">
+                            Save
+                            <span *ngIf="getIsSaving(selTag.id)" 
+                                  class="spinner-border spinner-border-sm mb-1">
+                            </span>
+                        </button>
+                        <button class="btn btn-danger m-1" type="button" (click)="cancel(selTag.id)">
+                            Cancel
+                        </button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

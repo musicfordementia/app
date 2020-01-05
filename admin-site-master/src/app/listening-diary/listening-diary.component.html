@@ -1,0 +1,42 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Listening Diary for {{ user.email }}</h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary" role="button" [routerLink]="['../../']">
+            Back to Users List
+        </a>
+    </p>
+
+    <table id="listeningDiary" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center">Date & Time</th>
+                <th class="text-center">Mood</th>
+                <th class="text-center">Situation</th>
+                <th class="text-center">Reaction</th>
+                <th class="text-center">Comments</th>
+                <th class="text-center">Songs</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let ld of listeningDiary">
+                <td>{{ ld.dateTime | date:'yyyy-MM-dd hh:mm:ss' }}</td>
+                <td>{{ ld.mood }}</td>
+                <td>{{ ld.situation }}</td>
+                <td>{{ ld.reaction }}</td>
+                <td>{{ ld.comments }}</td>
+                <td>
+                    <ul class="list-group">
+                        <li *ngFor="let s of ld.songs" class="list-group-item">
+                            <a [routerLink]="['/songs', s, 'edit']">
+                                {{ getSongName(s) }}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

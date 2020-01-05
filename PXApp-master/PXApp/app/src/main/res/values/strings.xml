@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">Music Playlist Guide</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Music Playlist Guide</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_account">Account</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_songs">Songs</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="password_confirm_hint">Confirm Password</string>
+    <string name="sign_up_button">SIGN UP</string>
+    <string name="sign_in_button">SIGN IN</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="institution_hint">Institution</string>
+    <string name="update_button">UPDATE</string>
+    <string name="change_password_button">CHANGE PASSWORD</string>
+    <string name="next_button">NEXT</string>
+    <string name="reset_password_button">RESET PASSWORD</string>
+
+    <string name="very_important">Very Important</string>
+    <string name="moderately_important">Moderately Important</string>
+    <string name="slightly_important">Slightly Important</string>
+    <string name="not_important">Not Important</string>
+    <string name="do_did_you_play_a_musical_instrument">Do did you play a musical instrument</string>
+    <string name="title_activity_appendix_1_pg_3">appendix_1_pg_3</string>
+    <string name="how_important_has_music_been_to">How important has music been to</string>
+    <string name="you_in_your_life">you in your life?</string>
+    <string name="less_than_1_year">Less than 1 year</string>
+    <string name="less_than_5_years">Less than 5 years</string>
+    <string name="more_than_5_years">More than 5 years</string>
+    <string name="less_than_3_years">Less than 3 years</string>
+    <string name="instrument">Instrument</string>
+    <string name="title_activity_appendix_1_pg_4">appendix_1_pg_4</string>
+    <string name="title_activity_appendix_1_pg_5">appendix_1_pg_5</string>
+    <string name="title_activity_appendix_1_pg_6">appendix_1_pg_6</string>
+    <string name="the_following_is_a_list_of_different_types_of_music_please_indicate_the_individual_s_3_most_favourite_types_with_1_being_the_most_favourite_2_the_next">The following is a list of different types of music. Please indicate the individual’s 3 most favourite types with 1 being the most favourite, 2 the next</string>
+    <string name="and_3_the_third_favourite">and 3 the third favourite.</string>
+    <string name="other">Other</string>
+    <string name="title_activity_appendix_1_pg_7">appendix_1_pg_7</string>
+    <string name="does_the_individual_prefer">Does the individual prefer:</string>
+    <string name="vocal">Vocal</string>
+    <string name="both">Both</string>
+    <string name="instrumental">Instrumental</string>
+    <string name="might_be_connected_with_happy_memories">might be connected with happy memories.</string>
+    <string name="please_identify_as_many_songs_as_you_can_think_of_that_makes_the_individual_feels_happy_or_that">Please identify as many songs as you can think of that makes the individual feels happy, or that</string>
+    <string name="songs">Songs</string>
+    <string name="specify_e_g_attended_dance_lessons_socials">specify (e.g. attended dance lessons, socials)</string>
+    <string name="dancing">Dancing</string>
+    <string name="does_did_he_she_enjoy_singing_if_yes_please_specify_e_g_around_the_house_in_choir_etc">Does/did he/she enjoy singing? If yes, please specify (e.g. around-the house, in choir etc.)</string>
+    <string name="please_identify_as_many_songs_as_you_can_think_of_that_makes_the_individual_feels_happy_or_that_might_be_connected_with_happy_memories">Please identify as many songs as you can think of that makes the individual feels happy, or that might be connected with happy memories.</string>
+    <string name="title_activity_appendix_1_pg_8">appendix_1_pg_8</string>
+    <string name="please_identify_any_specific_songs_that_you_can_think_of_which_might_make_the_individual_feel_sad_or_that_could_be_associated_with_distressing_memories">Please identify any specific songs that you can think of which might make the individual feel sad or that could be associated with distressing memories.</string>
+    <string name="please_identify_specific_artists_or_performers_that_the_individual_most_enjoys_listening_to">Please identify specific artists or performers that the individual most enjoys listening to.</string>
+    <string name="title_activity_appendix_1_pg_9">appendix_1_pg_9</string>
+    <string name="how_important_has_music_been_in_his_her_life">How important has music been in his/her life?</string><string name="_1">1.</string>
+    <string name="enter_other_if_selected">Enter Other (if selected)</string>
+    <string name="_2">2.</string>
+    <string name="string_enter_other_if_selected" />
+    <string name="_3">3.</string>
+    <string name="does_did_he_she_enjoy_dancing_if_yes_please_specify_e_g_attended_dance_lessons_socials">Does/did he/she enjoy dancing? If yes, please specify (e.g. attended dance lessons, socials)</string>
+    <string name="does_did_he_she_play_a_musical_instrument_if_yes_please_specify_e_g_piano_guitar">Does/did he/she play a musical instrument? If yes, please specify (e.g. piano, guitar)</string>
+    <string name="for_how_long_have_they_been_playing_this_instrument">For how long have they been playing this instrument?</string>
+    <string-array name="musicTypeArray">
+        <item>Country and Western</item>
+        <item>Classical</item>
+        <item>Spiritual/Religious</item>
+        <item>Big Band/Swing</item>
+        <item>Folk</item>
+        <item>Blues</item>
+        <item>Jazz</item>
+        <item>Rock and Roll</item>
+        <item>Easy Listening</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="rankingArray">
+        <item>Select Ranking</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="types_array">
+        <item>Carer</item>
+        <item>Patient</item>
+    </string-array>
+    <string name="title_activity_pre_survey_list">PreSurveyListActivity</string>
+    <string name="pre_survey_title">Complete these surveys to recieve your playlist</string>
+    <string name="submit">Submit</string>
+    <string name="strongly_agree">Strongly Agree</string>
+    <string name="agree">Agree</string>
+    <string name="neither_agree_nor_disagree">Neither Agree Nor Disagree</string>
+    <string name="strongly_disagree">Strongly Disagree</string>
+    <string name="disagree">Disagree</string>
+    <string name="in_the_last_2_weeks_i_have_had_little_interest_or_pleasure_in_doing_things">In the last 2 weeks I have had little interest or pleasure in doing things</string>
+    <string name="in_the_last_2_weeks_i_have_felt_down_depressed_or_hopeless">In the last 2 weeks I have felt down, depressed or hopeless</string>
+    <string name="title_activity_appendix_4_pg_3">appendix_4_pg_3</string>
+    <string name="often_throughout_my_life_i_have_felt_down_depressed_or_hopeless">Often throughout my life I have felt down, depressed or hopeless</string>
+    <string name="in_the_past_2_weeks_i_have_felt_so_restless_it_is_hard_to_sit_still">In the past 2 weeks I have felt so restless it is hard to sit still</string>
+    <string name="begin">Begin</string>
+    <string name="please_tick_the_box_in_each_row_which_shows_the_degree_to_which_the_individual_agrees_with_these_statements">Please tick the box in each row which shows the degree to which the individual agrees with these statements</string>
+    <string name="title_activity_appendix_4_pg_4">appendix_4_pg_4</string>
+    <string name="i_have_often_had_periods_in_my_life_where_i_felt_so_restless_it_was_hard_to_sit_still">I have often had periods in my life where I felt so restless it was hard to sit still</string>
+    <string name="sometimes_i_feel_so_upset_that_i_want_to_hit_or_kick_something">Sometimes I feel so upset that I want to hit or kick something</string>
+    <string name="title_activity_appendix_4_pg_5">appendix_4_pg_5</string>
+    <string name="title_activity_appendix_4_pg_6">appendix_4_pg_6</string>
+    <string name="sometimes_i_feel_so_stirred_up_inside_i_want_to_scream">Sometimes I feel so stirred up inside I want to scream</string>
+    <string name="listening_to_music_can_sometimes_bring_back_distressing_memories">Listening to music can sometimes bring back distressing memories</string>
+    <string name="sometimes_i_get_so_stirred_up_my_music_that_my_emotions_feel_overwhelming">Sometimes I get so stirred up my music that my emotions feel overwhelming</string>
+    <string name="please_indicate_in_order_the_individuals_3_most_favourite_types_of_music_from_the_selections_below">Please indicate, in order, the individuals 3 most favourite types of music from the selections below :</string>
+    <string name="please_indicate_in_order_your_3_most_favourite_types_of_music_from_the_selections_below">Please indicate, in order, your 3 most favourite types of music from the selections below :</string>
+    <string name="agitation">Agitation</string>
+    <string name="what_are_the_main_challenges_to_care_for_this_individual_rank_the_following_challeneges_from_1_3_1_being_the_most_challenging">What are the main challenges to care for this individual? Rank the following challeneges from 1 – 3, 1 being the most challenging</string>
+    <string name="depression">Depression</string>
+    <string name="apathy_withdrawal">Apathy/Withdrawal</string>
+    <string name="next">Next</string>
+    <string name="sundowners_syndrome">Sundowners Syndrome</string>
+    <string name="sleep_problems">Sleep Problems</string>
+    <string name="falls">Falls</string>
+    <string name="restlessness">Restlessness</string>
+    <string name="night_wandering">Night Wandering</string>
+    <string name="artists_performers">Artists / Performers</string>
+    <string name="dancing_location">Dancing Location</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="singing_location">Singing Location</string>
+    <string name="albums">Albums</string>
+    <string name="sad_songs">Sad Songs</string>
+    <string name="reduced_verbal_or_social_engagement">Reduced Verbal or Social Engagement</string>
+    <string name="resistance_to_care_situations_showering_dressing_or_eating">Resistance to Care Situations (Showering, Dressing or Eating)</string>
+    <string name="boredom">Boredom</string>
+    <string name="song_id_hint">ID</string>
+    <string name="song_name_hint">Name</string>
+    <string name="song_artist_hint">Artist</string>
+    <string name="song_link_hint">Link</string>
+    <string name="song_tempo_hint">Tempo</string>
+    <string name="song_mode_hint">Mode</string>
+    <string name="song_genre_hint">Genre</string>
+    <string name="song_length_hint">Length</string>
+    <string name="song_year_hint">Year</string>
+    <string name="song_lyric_type_hint">Lyric Type</string>
+    <string name="open_link_button">OPEN LINK</string>
+    <string name="in_the_last_2_weeks_he_she_has_had_little_interest_or_pleasure_in_doing_things">In the last 2 weeks he/she has had little interest or pleasure in doing things</string>
+    <string name="in_the_last_2_weeks_he_she_has_felt_down_depressed_or_hopeless">In the last 2 weeks he/she has felt down, depressed or hopeless</string>
+    <string name="often_throughout_his_her_life_he_she_has_felt_down_depressed_or_hopeless">Often throughout his/her life he/she has felt down, depressed or hopeless</string>
+    <string name="in_the_past_2_weeks_he_she_has_found_it_hard_to_sit_still">In the past 2 weeks he/she has found it hard to sit still</string>
+    <string name="he_she_has_often_had_periods_where_he_she_felt_so_restless_it_was_hard_to_sit_still">He/she has often had periods where he/she felt so restless it was hard to sit still</string>
+    <string name="sometimes_he_she_feel_so_upset_that_he_she_hits_or_kicks_something">Sometimes he/she feel so upset that he/she hits or kicks something</string>
+    <string name="sometimes_he_she_feels_so_stirred_up_that_he_she_screams">Sometimes he/she feels so stirred up that he/she screams</string>
+    <string name="sometimes_listening_to_music_can_bring_back_distressing_memories_to_him_her">Sometimes listening to music can bring back distressing memories to him/her</string>
+    <string name="sometimes_he_she_experiences_overwhelming_emotions_in_response_to_music">Sometimes he/she experiences overwhelming emotions in response to music</string>
+    <string name="complete_these_surveys_after_listening_to_your_playlist">Complete these surveys after listening to your playlist</string>
+    <string name="name_some_albums_that_the_individual_has_in_his_her_personal_music_library">Name some albums that the individual has in his/her personal music library</string>
+    <string name="name_some_albums_that_you_have_in_your_personal_music_library">Name some albums that you have in your personal music library</string>
+    <string name="please_identify_specific_artists_or_performers_that_you_enjoy_listening_to_the_most">Please identify specific artists or performers that you enjoy listening to the most</string>
+    <string name="please_identify_any_specific_songs_that_you_can_think_of_which_you_find_sad_or_distressing_to_listen_to">Please identify any specific songs that you can think of which you find sad or distressing to listen to</string>
+    <string name="please_identify_as_many_songs_as_you_can_think_of_that_make_you_feel_happy">Please identify as many songs as you can think of that make you feel happy</string>
+    <string name="happy_songs">Happy Songs</string>
+    <string name="do_you_prefer">Do you prefer :</string>
+    <string name="do_did_you_enjoy_dancing_if_yes_please_specify_e_g_attended_dance_lessons_socials">Do/did you enjoy dancing? If yes, please specify (e.g. attended dance lessons, socials)</string>
+    <string name="do_did_you_enjoy_singing_if_yes_please_specify_e_g_around_the_house_in_choir_etc">Do/did you enjoy singing? If yes, please specify (e.g. around-the house, in choir etc.)</string>
+    <string name="for_how_long_have_you_been_playing_this_instrument">For how long have you been playing this instrument?</string>
+    <string name="do_did_you_play_a_musical_instrument_if_yes_please_specify_e_g_piano_guitar">Do/did you play a musical instrument? If yes, please specify (e.g. piano, guitar)</string>
+    <string name="agitation_or_anxiety">Agitation or Anxiety</string>
+    <string name="withdrawal_or_apathy">Withdrawal or Apathy</string>
+    <string name="resistance_to_care_situations_such_as_showering_dressing_or_eating">Resistance to care situations such as showering, dressing or eating</string>
+    <string name="restlessness_wandering_or_falls">Restlessness, Wandering or Falls</string>
+    <string name="problems_sleeping">Problems Sleeping</string>
+    <string name="music_playlists_for_people_with_dementia_a_guide_for_carers_health_workers_and_family">Music Playlists for People With Dementia: A Guide for Carers, Health Workers and Family</string>
+    <string name="todo">TODO</string>
+    <string name="developing_usage_plan">
+        To develop a plan for future music use with each patient consider the following questions based on the data recorded in the Listening Diary:\n\n
+        1. Which particular songs were useful for reducing agitation?\n\n
+        2. Which particular songs were useful for increasing alertness?\n\n
+        3. Which songs were useful for distracting the person or managing difficult behaviour?\n\n
+        4. Which songs were useful for cheering the person up?\n\n
+        5. Which songs were useful for helping the person to sleep?\n\n
+        6. Which songs resulted in negative reactions? Have these been deleted from the playlists?\n\n
+        7. Which times of day was it most useful to play music to this person and which playlist was used at these times?\n\n
+        8. Which listening situation was most comfortable for the person? (E.g. did they prefer to listen without headphones, and in a solitary place?)\n\n
+        9. On average, how long did the person listen before losing interest?\n\n
+        10. How often during a 1-week period was this person able to listen to the same playlist before it lost its effect?
+    </string>
+    <string name="if_you_haven_t_recieved_your_playlist_you_will_need_to_complete_the_surveys_below">If you haven\'t recieved your playlist, you will need to complete the surveys below :</string>
+    <string name="go_to_pre_surveys">Go to Pre-surveys</string>
+    <string name="post_survey_title">If you have a playlist, check out the surveys below :</string>
+    <string name="go_to_post_surveys">Go to Post-surveys</string>
+    <string name="appendix_5_rating_info">
+        Score this piece of music played using the following rating scale:\n
+        1. Lack of recognition or interest\n\n
+        2. No sign of recognition, but slight interest when listening\n\n
+        3. Weak sense of familiarity revealed by facial expressions and humming\n\n
+        4. Sense of familiarity verbalised, e.g. “I may have heard this before”\n\n
+        5. Stronger sense of familiarity verbalised, e.g. “I have known this song for a long time”\n\n
+        6. Remembering of specific memories as indicated by providing contextual information, e.g. “I heard this when…”\n\n
+    </string>
+
+    <string name="mood_hint">Mood prior to listening</string>
+    <string name="situation_hint">Listening Situation (headphones, private area)</string>
+    <string name="reaction_hint">Reaction</string>
+    <string name="comments_hint">Comments</string>
+
+    <string name="playlist_hint">Playlist Name</string>
+    <string name="time_of_day_hint">Time of Day to be Used (e.g. a.m, before sleep)</string>
+    <string name="symptoms_hint">Symptoms for Which it is Useful (e.g. when agitated)</string>
+    <string name="how_often_hint">How Often To Be Used (e.g. once per day)</string>
+    <string name="how_long_hint">How Long to Be Used (e.g. 30 mins)</string>
+
+    <string name="usage_plan_error_message">
+        No playlists found - Please complete a pre-survey to get your playlists
+    </string>
+</resources>

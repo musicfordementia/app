@@ -1,0 +1,32 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>{{ questionnaire.name }} - Questions</h2>
+    <h4>{{ getTypeName(questionnaire.typeID) }}</h4>
+
+    <p>
+        <a class="btn btn-lg btn-primary" [routerLink]="['../../']">Back to Questionnaires List</a>
+    </p>
+    
+    <table id="questions" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 5%">No.</th>
+                <th class="text-center" style="width: 10%">Page Number</th>
+                <th class="text-center" style="width: 75%">Question</th>
+                <th class="text-center" style="width: 10%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let question of questionnaire.questions; index as i">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td class="text-center">{{ question.pageNo }}</td>
+                <td>{{ question.str }}</td>
+                <td>
+                    <a class="btn btn-primary" role="button" [routerLink]="[question.id, 'edit']">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        <tbody>
+    </table>
+</div>

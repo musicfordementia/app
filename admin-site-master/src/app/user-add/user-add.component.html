@@ -1,0 +1,82 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>Add User</h2>
+
+    <form #userForm="ngForm">
+        <div class="form-group row">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-4">
+                <input id="inputEmail" name="inputEmail" class="form-control" type="text" 
+                       [(ngModel)]="user.email">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input id="inputPassword" name="inputPassword" class="form-control" 
+                           type="{{ showPassword ? 'text' : 'password' }}" 
+                           [(ngModel)]="user.password">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <input id="chk" name="chk" type="checkbox" [(ngModel)]="showPassword">
+                            <label for="chk" class="form-check-label ml-1">Show Password</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selTypes" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-4">
+                <select id="selTypes" name="selTypes" class="custom-select" 
+                        [(ngModel)]="user.typeID">
+                    <option *ngFor="let ut of userTypes" [value]="ut.id">{{ ut.type }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputInstitution" class="col-sm-2 col-form-label">Institution</label>
+            <div class="col-sm-4">
+                <input id="inputInstitution" name="inputInstitution" class="form-control" 
+                       type="text" [(ngModel)]="user.institution">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-4">
+                <input id="inputFirstName" name="inputFirstName" class="form-control" 
+                       type="text" [(ngModel)]="user.firstName">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-4">
+                <input id="inputLastName" name="inputLastName" class="form-control" 
+                       type="text" [(ngModel)]="user.lastName">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <!-- TODO: Add spinner -->
+                <button class="btn btn-lg btn-success mr-2" type="button" (click)="addUser()">
+                    Add
+                </button>
+                <a class="btn btn-lg btn-danger" role="button" [routerLink]="['../']">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert" (click)="message = ''">{{ message }}</div>
+</div>

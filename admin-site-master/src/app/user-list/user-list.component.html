@@ -1,0 +1,100 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+	<h2>Users</h2>
+
+	<p>
+		<a class="btn btn-lg btn-primary" role="button" [routerLink]="['add']">Add User</a>
+	</p>
+
+	<table id="users" class="table table-bordered table-hover mt-3" style="width: 100%">
+		<thead>
+			<tr>
+				<th class="text-center" style="width: 10%">ID</th>
+				<th class="text-center" style="width: 15%">Email</th>
+				<th class="text-center" style="width: 10%">Type</th>
+				<th class="text-center" style="width: 10%">Institution</th>
+				<th class="text-center" style="width: 15%">First Name</th>
+				<th class="text-center" style="width: 15%">Last Name</th>
+				<th class="text-center" style="width: 25%">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+            <ng-container *ngFor="let user of users">
+                <tr *ngIf="!getSelectedUser(user.id)">
+                    <td style="width: 10%">{{ user.id }}</td>
+                    <td style="width: 15%">{{ user.email }}</td>
+                    <td style="width: 10%">{{ getUserType(user.typeID) }}</td>
+                    <td style="width: 10%">{{ user.institution }}</td>
+                    <td style="width: 15%">{{ user.firstName }}</td>
+                    <td style="width: 15%">{{ user.lastName }}</td>
+                    <td style="width: 25%">
+                        <button class="btn btn-primary m-1" type="button" (click)="editUser(user)">
+                            Edit
+                        </button>
+                        <a class="btn btn-primary m-1" role="button" 
+                            [routerLink]="[user.id, 'update-password']">
+                            Update Password
+                        </a>
+                        <a class="btn btn-primary m-1" role="button" 
+                            [routerLink]="[user.id, 'questionnaires']">
+                            Questionnaires
+                        </a>
+                        <a class="btn btn-primary m-1" role="button" 
+                           [routerLink]="[user.id, 'playlists']">
+                            Playlists
+                        </a>
+                        <a class="btn btn-primary m-1" role="button" 
+                           [routerLink]="[user.id, 'song-ratings']">
+                            Song Ratings
+                        </a>
+                        <a class="btn btn-primary m-1" role="button" 
+                           [routerLink]="[user.id, 'listening-diary']">
+                            Listening Diary
+                        </a>
+                        <a class="btn btn-primary m-1" role="button" 
+                           [routerLink]="[user.id, 'usage-plan']">
+                            Usage Plan
+                        </a>
+                        
+                        <div *ngIf="messageMap.getMessage(user.id) as msg" 
+                                [className]="'alert ' + (messageMap.getSuccess(user.id) ? 'alert-success' : 'alert-danger')" 
+                                role="alert" (click)="messageMap.clearMessage(user.id)">
+                            {{ msg }}
+                        </div>
+                    </td>
+                </tr>
+
+                <tr *ngIf="getSelectedUser(user.id) as selUser">
+                    <td style="width: 10%">{{ selUser.id }}</td>
+                    <td style="width: 20%">
+                        <input class="form-control" [(ngModel)]="selUser.email" type="text">
+                    </td>
+                    <td style="width: 15%">
+                        <select class="custom-select" [(ngModel)]="selUser.typeID">
+                            <option *ngFor="let ut of userTypes" [value]="ut.id">{{ ut.type }}</option>
+                        </select>
+                    </td>
+                    <td style="width: 15%">
+                        <input class="form-control" [(ngModel)]="selUser.institution" type="text">
+                    </td>
+                    <td style="width: 15%">
+                        <input class="form-control" [(ngModel)]="selUser.firstName" type="text">
+                    </td>
+                    <td style="width: 15%">
+                        <input class="form-control" [(ngModel)]="selUser.lastName" type="text">
+                    </td>
+                    <td style="width: 10%">
+                        <button class="btn btn-success m-1" type="button" (click)="save(selUser)">
+                            Save
+                        </button>
+                        <a class="btn btn-danger m-1" role="button" [routerLink]="" 
+                            (click)="cancel(selUser.id)">
+                            Cancel
+                        </a>
+                    </td>
+                </tr>
+            </ng-container>
+		<tbody>
+	</table>
+</div>
+

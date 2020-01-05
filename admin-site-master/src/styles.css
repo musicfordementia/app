@@ -1,0 +1,43 @@
+:root {
+    --main-color: rgb(35, 96, 193);
+    --main-color-hover: rgb(45, 116, 203);
+}
+
+.page-link, .page-link:hover {
+    color: var(--main-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+.btn-primary:hover {
+    background-color: var(--main-color-hover);
+}
+
+.btn-lg {
+    padding: 0.3rem 0.8rem;
+}
+
+.btn {
+    padding: 0.2rem 0.4rem;
+}
+
+.table td, .table th {
+    padding: 0.5rem;
+}
+
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, 
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, 
+table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, 
+table.dataTable thead .sorting_asc_disabled:before, 
+table.dataTable thead .sorting_asc_disabled:after, 
+table.dataTable thead .sorting_desc_disabled:before, 
+table.dataTable thead .sorting_desc_disabled:after {
+    bottom: 0.5rem;
+}

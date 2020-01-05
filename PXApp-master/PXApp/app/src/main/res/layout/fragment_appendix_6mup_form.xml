@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:text="Enter the Playlist Name:" />
+
+        <com.example.pxapp.InstantAutoComplete
+            android:id="@+id/txtPlaylistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dropDownHeight="180dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/time_of_day_hint"
+            style="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtTimeOfDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:inputType="text"
+                android:layout_margin="30dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/symptoms_hint"
+            style="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtSymptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:inputType="text"
+                android:layout_margin="30dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/how_often_hint"
+            style="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtHowOften"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:inputType="text"
+                android:layout_margin="30dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/how_long_hint"
+            style="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtHowLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25sp"
+                android:inputType="text"
+                android:layout_margin="30dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/submitMUP"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:textSize="@dimen/button_text_size"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>

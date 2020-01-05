@@ -1,0 +1,132 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>Playlists for {{ user.email }}</h2>
+
+    <p>
+        <button class="btn btn-lg btn-primary mr-2" type="button" data-toggle="collapse" 
+                data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+            Add Playlist
+        </button>
+
+        <button class="btn btn-lg btn-primary mr-2" type="button" data-toggle="collapse" 
+                data-target="#collapseRun" aria-expanded="false" aria-controls="collapse" 
+                [disabled]="isRunning">
+            Run Rules
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+
+        <a class="btn btn-lg btn-primary" [routerLink]="['/users']">Back to Users List</a>
+    </p>
+
+    <div id="collapse" class="collapse p-2 mb-2 border rounded">
+        <div class="form-group row">
+            <label for="selP" class="col-auto col-form-label">Playlist</label>
+
+            <div class="col-sm-4">
+                <ng-select id="selP" name="selP" [items]="allPlaylists" bindLabel="name" 
+                           [(ngModel)]="selectedPlaylist">
+                </ng-select>
+            </div> 
+
+            <div class="col-sm-2">
+                <button class="btn btn-success" type="button" (click)="addPlaylist()" 
+                        [disabled]="isAddingPlaylist">
+                    Add
+                    <span *ngIf="isAddingPlaylist" class="spinner-border spinner-border-sm mb-1">
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapseRun" class="collapse p-2 mb-2 border rounded">
+        <div class="alert alert-danger" role="alert">
+            Running rules will delete the user's current playlists.<br>
+            Are you sure you want to continue?
+        </div>
+
+        <button class="btn btn-success mr-2" type="button" (click)="runRules()" 
+                [disabled]="isRunning">
+            Continue
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+        <button class="btn btn-danger" type="button" data-toggle="collapse" [disabled]="isRunning"
+                data-target="#collapseRun" aria-controls="collapse">
+            Cancel
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+    </div>
+
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert" (click)="message=''">
+        {{ message }}
+    </div>
+
+    <div *ngIf="matchedRules && matchedRules.length > 0">
+        <h4>Matched Rules: {{ matchedRules.length }}</h4>
+        <ul>
+            <li *ngFor="let id of matchedRules">
+                Rule {{ id }} |
+                <a [routerLink]="['/rules/playlists', id, 'edit']">Edit</a>
+            </li>
+        </ul>
+    </div>
+
+    <table id="playlists" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 20%">Name</th>
+                <th class="text-center" style="width: 30%">Description</th>
+                <th class="text-center" style="width: 10%">Songs</th>
+                <th class="text-center" style="width: 20%">Tags</th>
+                <th class="text-center" style="width: 20%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of playlists">
+                <td>{{ p.name }}</td>
+                <td>{{ p.description }}</td>
+                <td>{{ p.songs.length }}</td>
+                <td>{{ joinTags(p.tags) }}</td>
+                <td>
+                    <a class="btn btn-primary mr-2" role="button" 
+                       [routerLink]="['/playlists', p.id, 'songs']">
+                        Songs
+                    </a>
+
+                    <button class="btn btn-danger" type="button" data-toggle="collapse"
+                            [attr.data-target]="'#collapseDelete' + p.id" aria-expanded="false" 
+                            aria-controls="collapse" [disabled]="isDeletingPlaylist">
+                        Delete
+                        <span *ngIf="isDeletingPlaylist" 
+                              class="spinner-border spinner-border-sm mb-1">
+                        </span>
+                    </button>
+
+                    <div id="collapseDelete{{ p.id }}" class="collapse">
+                        <div class="alert alert-danger" role="alert">
+                            Are you sure you want to delete this playlist?
+                        </div>
+                
+                        <button class="btn btn-primary mr-2" type="button"
+                                (click)="deletePlaylist(p.id)" [disabled]="isDeletingPlaylist">
+                            Delete
+                            <span *ngIf="isDeletingPlaylist" 
+                                  class="spinner-border spinner-border-sm mb-1">
+                            </span>
+                        </button>
+
+                        <button class="btn btn-secondary" type="button" data-toggle="collapse" 
+                                [disabled]="isDeletingPlaylist" aria-controls="collapse"
+                                [attr.data-target]="'#collapseDelete' + p.id">
+                            Cancel
+                            <span *ngIf="isDeletingPlaylist" 
+                                  class="spinner-border spinner-border-sm mb-1">
+                            </span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

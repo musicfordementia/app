@@ -1,0 +1,64 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Editing Rule {{ rule.id }}</h2>
+
+    <p>
+        If the count of answer tag satisfies the condition, then assign the playlists which have 
+        the specified tags.
+    </p>
+
+    <form>
+        <div class="form-group row">
+            <label for="selTarget" class="col-sm-2 col-form-label">Answer Tag</label>
+            <div class="col-sm-4">
+                <ng-select id="selTarget" name="selTarget" [items]="allTags" bindLabel="name"
+                           bindValue="id" [(ngModel)]="rule.tagID">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selOp" class="col-sm-2 col-form-label">Condition</label>
+            <div class="col-sm-4">
+                <ng-select id="selOp" name="selOp" [items]="allOps" bindLabel="name"
+                           bindValue="op" [(ngModel)]="rule.op">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputCount" class="col-sm-2 col-form-label">Count</label>
+            <div class="col-sm-4">
+                <input id="inputCount" name="inputCount" class="form-control" type="number" 
+                       [(ngModel)]="rule.count" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selTags" class="col-sm-2 col-form-label">Playlist Tags</label>
+            <div class="col-sm-4">
+                <ng-select id="selTags" name="selTags" [items]="allTags" bindLabel="name"
+                            [multiple]="true" [(ngModel)]="ruleTags">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg btn-success mr-2" type="button" (click)="save()">
+                    Save
+                </button>
+                <a class="btn btn-lg btn-danger" role="button" [routerLink]="['/rules']"
+                   [queryParams]="{ selected: 'playlist' }">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+  
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert" (click)="message=''">
+        {{ message }}
+    </div>
+</div>

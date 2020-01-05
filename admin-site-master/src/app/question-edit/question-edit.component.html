@@ -1,0 +1,98 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>Editing Question {{ question.id }}</h2>
+    
+    <form>
+        <div class="form-group row">
+            <label for="inputPageNo" class="col-sm-2 col-form-label">Page Number</label>
+            <div class="col-sm-2">
+                <input id="inputPageNo" name="inputPageNo" class="form-control" type="number" 
+                       [(ngModel)]="question.pageNo">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputQuestion" class="col-sm-2 col-form-label">Question</label>
+            <div class="col-sm-4">
+                <textarea id="inputQuestion" name="inputQuestion" class="form-control"
+                          rows="2" [(ngModel)]="question.str">
+          </textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selectType" class="col-sm-2 col-form-label">Choice Type</label>
+            <div class="col-auto">
+                <select id="selectType" name="selectType" class="custom-select" 
+                        [(ngModel)]="question.typeID">
+                    <option *ngFor="let ct of choiceTypes" [value]="ct.id">{{ ct.type }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">Has Other</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input id="inputHasOther" name="inputHasOther" class="form-check-input" 
+                           type="checkbox" [(ngModel)]="question.hasOther">
+                    <label class="form-check-label" for="inputHasOther">
+                        {{ question.hasOther ? "Yes" : "No" }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selectChoice" class="col-sm-2 col-form-label">
+                Visible If ChoiceID
+            </label>
+            <div class="col-auto">
+                <select id="selectChoice" name="selectChoice" class="custom-select" 
+                        [(ngModel)]="question.visibleIfChoiceID">
+                    <option value="null">None</option>
+                    <option *ngFor="let choice of choices" [value]="choice.id">
+                        ChoiceID {{ choice.id }} Question {{ choice.questionID }}: {{ choice.str }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngFor="let qc of question.choices; let i = index" class="form-group row">
+            <label *ngIf="qc.questionID != 0" class="col-sm-2 col-form-label">Choice {{ i + 1 }}</label>
+            <div *ngIf="qc.questionID != 0" class="col-sm-2">
+                <input id="inputChoice{{ i + 1 }}" name="inputChoice{{ i + 1 }}" 
+                        class="form-control" type="text" [(ngModel)]="qc.str">
+            </div>
+            <div *ngIf="qc.questionID != 0" class="col-auto">
+                <button type="button" class="btn btn-danger" (click)="deleteChoice(i)">
+                    Delete
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-primary" (click)="addChoice()">
+                    Add Choice
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-success btn-lg mr-2" (click)="save()">
+                    Save
+                </button>
+                <a role="button" class="btn btn-danger btn-lg" [routerLink]="['../../']">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert">{{ message }}</div>
+</div>

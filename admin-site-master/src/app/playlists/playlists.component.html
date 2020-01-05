@@ -1,0 +1,41 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>Playlists</h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary mr-2" role="button" [routerLink]="['add']">
+            Add Playlist
+        </a>
+    </p>
+
+    <table id="playlists" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 20%">Name</th>
+                <th class="text-center" style="width: 30%">Description</th>
+                <th class="text-center" style="width: 10%">Songs</th>
+                <th class="text-center" style="width: 20%">Tags</th>
+                <th class="text-center" style="width: 20%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let playlist of playlists">
+                <td>{{ playlist.name }}</td>
+                <td>{{ playlist.description }}</td>
+                <td>{{ playlist.songs.length }}</td>
+                <td>{{ getTags(playlist.id) }}</td>
+                <td>
+                    <a class="btn btn-primary m-1" role="button" 
+                       [routerLink]="[playlist.id, 'edit']">
+                        Edit
+                    </a>
+
+                    <a class="btn btn-primary m-1" role="button" 
+                        [routerLink]="[playlist.id, 'songs']">
+                        Songs
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

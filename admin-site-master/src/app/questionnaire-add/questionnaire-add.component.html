@@ -1,0 +1,176 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <div class="border rounded mt-2 p-2">
+        <h2>Add Questionnaire</h2>
+
+        <form>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-4">
+                    <input id="inputName" name="inputName" class="form-control" type="text" 
+                            [(ngModel)]="questionnaire.name">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="selType" class="col-sm-2 col-form-label">Type</label>
+                <div class="col-sm-4">
+                    <ng-select id="selType" name="selType" [items]="questionnaireTypes" 
+                               bindLabel="name" bindValue="id" [(ngModel)]="questionnaire.typeID">
+                    </ng-select>
+                </div>
+            </div>
+        
+            <div class="border rounded p-3">
+                <h3>{{ isEditing ? 'Edit' : 'Add' }} Question</h3>
+                <div class="form-group row">
+                    <label for="inputPageNo" class="col-sm-2 col-form-label">Page Number</label>
+                    <div class="col-sm-2">
+                        <input id="inputPageNo" name="inputPageNo" class="form-control" type="number" 
+                                [(ngModel)]="currQuestion.pageNo">
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <label for="inputQuestion" class="col-sm-2 col-form-label">Question</label>
+                    <div class="col-sm-4">
+                        <textarea id="inputQuestion" name="inputQuestion" class="form-control"
+                                  rows="2" [(ngModel)]="currQuestion.str">
+                        </textarea>
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <label for="selectType" class="col-sm-2 col-form-label">Choice Type</label>
+                    <div class="col-auto">
+                        <select id="selectType" name="selectType" class="custom-select" 
+                                [(ngModel)]="currQuestion.typeID">
+                            <option *ngFor="let ct of choiceTypes" [value]="ct.id">{{ ct.type }}</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <div class="col-sm-2">Has Other</div>
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-checkbox">
+                            <input id="inputHasOther" name="inputHasOther" class="custom-control-input" 
+                                    type="checkbox" [(ngModel)]="currQuestion.hasOther">
+                            <label class="custom-control-label" for="inputHasOther">
+                                {{ currQuestion.hasOther ? "Yes" : "No" }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border rounded p-2">
+                    <h3>Choices</h3>
+
+                    <div *ngFor="let choice of currQuestion.choices; index as i" class="form-group row">
+                        <label class="col-sm-2 col-form-label">Choice {{ i + 1 }}</label>
+                        <div class="col-sm-2">
+                            <input id="inputChoice{{ i + 1 }}" name="inputChoice{{ i + 1 }}" type="text"
+                                    class="form-control" [(ngModel)]="choice.str">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-danger" (click)="deleteChoice(i)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary" (click)="addChoice()">
+                                Add Choice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <div class="col">
+                        <button *ngIf="!isEditing" type="button" class="btn btn-success mr-2" 
+                                (click)="addQuestion()">
+                            Add Question
+                        </button>
+
+                        <button *ngIf="isEditing" type="button" class="btn btn-success mr-2" 
+                                (click)="saveQuestion()">
+                            Save Question
+                        </button>
+
+                        <button type="button" class="btn btn-danger" (click)="clearQuestion()">
+                             Clear Question
+                        </button>
+                    </div>
+                </div>
+
+                <div *ngIf="!isValid && validationMessage" class="alert alert-danger" role="alert">
+                    {{ validationMessage }}
+                </div>
+            </div>
+        
+            <div class="form-group row mt-3">
+                <div class="col-sm-10">
+                    <button class="btn btn-success btn-lg mr-2" type="submit" (click)="submit()">
+                        Submit Questionnaire
+                    </button>
+                    <a class="btn btn-danger btn-lg" role="button" [routerLink]="['../']">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        
+            <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+                 role="alert">{{ message }}</div>
+        </form>
+    </div>
+
+    <div class="mt-2">
+        <h3>Questions</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 5%">No</th>
+                    <th class="text-center" style="width: 5%">Page Number</th>
+                    <th class="text-center" style="width: 40%">Question</th>
+                    <th class="text-center" style="width: 10%">Choice Type</th>
+                    <th class="text-center" style="width: 10%">Choice Has Other</th>
+                    <th class="text-center" style="width: 20%">Choices</th>
+                    <th class="text-center" style="width: 20%">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let question of questionnaire.questions | slice: (page-1) * pageSize : page * pageSize; index as i">
+                <tr [className]="(isEditing && currQuestion == question) ? 'table-active' : ''">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ question.pageNo }}</td>
+                    <td>{{ question.str }}</td>
+                    <td>{{ getChoiceType(question.typeID) }}</td>
+                    <td>{{ question.hasOther ? "True" : "False" }}</td>
+                    <td>
+                        <ul class="list-group">
+                            <li *ngFor="let choice of question.choices" class="list-group-item">
+                                {{ choice.str }}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary mr-2" type="button" 
+                                (click)="editQuestion(question)">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger" type="button" 
+                                (click)="deleteQuestion(question)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            <tbody>
+        </table>
+        <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" 
+                        [collectionSize]="questionnaire.questions.length"></ngb-pagination>
+    </div>
+</div>
+
+

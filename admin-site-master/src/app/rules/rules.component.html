@@ -1,0 +1,24 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <p class="mt-2">
+        <button [className]="'btn btn-lg mr-2 ' + (qaSelected ? 'btn-primary' : 'btn-secondary')"
+                type="button" (click)="onClick(true)">
+            Question Answer Rules
+        </button>
+
+        <button [className]="'btn btn-lg mr-2 ' + (!qaSelected ? 'btn-primary' : 'btn-secondary')"
+                type="button" (click)="onClick(false)">
+            Playlist Rules
+        </button>
+    </p>
+
+    <hr>
+
+    <div *ngIf="qaSelected">
+        <app-question-answer-list></app-question-answer-list>
+    </div>
+
+    <div *ngIf="!qaSelected">
+        <app-playlist-rules></app-playlist-rules>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<h2>Sign In</h2>
+<form (submit)="signin()">
+    <div class="form-group row">
+        <label for="username" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-2">
+            <input id="username" name="username" class="form-control" type="text" 
+                   [(ngModel)]="username">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-2">
+            <input id="password" name="password" class="form-control" type="password" 
+                   [(ngModel)]="password">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button class="btn btn-lg btn-success" type="submit" [disabled]="signingIn">
+                Sign In
+                <span *ngIf="signingIn" class="spinner-border spinner-border-sm mb-1"></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+     role="alert">{{ message }}</div>

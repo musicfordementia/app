@@ -1,0 +1,32 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Song Ratings for {{ user.email }}</h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary" role="button" [routerLink]="['../../']">
+            Back to Users List
+        </a>
+    </p>
+
+    <table id="songRatings" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center">Date</th>
+                <th class="text-center">Song</th>
+                <th class="text-center">Rating</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let sr of songRatings">
+                <td>{{ sr.date | date:'yyyy-MM-dd' }}</td>
+                <td>
+                    <a [routerLink]="['/songs', sr.songID, 'edit']">
+                        {{ getSongName(sr.songID) }}
+                    </a>
+                </td>
+                <td>{{ sr.rating }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

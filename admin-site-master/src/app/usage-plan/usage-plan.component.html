@@ -1,0 +1,32 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Usage Plan for {{ user.email }}</h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary" role="button" [routerLink]="['../../']">
+            Back to Users List
+        </a>
+    </p>
+
+    <table id="usagePlan" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center">Playlist</th>
+                <th class="text-center">Time Of Day</th>
+                <th class="text-center">Symptoms</th>
+                <th class="text-center">How Often</th>
+                <th class="text-center">How Long</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let up of usagePlan">
+                <td>{{ getPlaylistName(up.playlistID) }}</td>
+                <td>{{ up.timeOfDay }}</td>
+                <td>{{ up.symptoms }}</td>
+                <td>{{ up.howOften }}</td>
+                <td>{{ up.howLong }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

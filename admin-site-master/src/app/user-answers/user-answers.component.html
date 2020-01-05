@@ -1,0 +1,77 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Answers for '{{ currQuestionnaire.name }}'</h2>
+    <h4>{{ user.email }}</h4>
+
+    <p>
+        <button class="btn btn-lg btn-primary mr-2" type="button" data-toggle="collapse" 
+                data-target="#collapseRun" aria-expanded="false" aria-controls="collapse" 
+                [disabled]="isRunning">
+            Run Rules
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+
+        <a class="btn btn-lg btn-primary" [routerLink]="['../../']">Back to Questionnaires List</a>
+    </p>
+
+    <div id="collapseRun" class="collapse p-2 mb-2 border rounded">
+        <div class="alert alert-danger" role="alert">
+            Running rules will delete the answer tags for the current questionnaire.<br>
+            Are you sure you want to continue?
+        </div>
+
+        <button class="btn btn-success mr-2" type="button" (click)="runRules()" 
+                [disabled]="isRunning">
+            Continue
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+        <button class="btn btn-danger" type="button" data-toggle="collapse" [disabled]="isRunning"
+                data-target="#collapseRun" aria-controls="collapse">
+            Cancel
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+    </div>
+
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert" (click)="message=''">
+        {{ message }}
+    </div>
+
+    <div *ngIf="matchedRules && matchedRules.length > 0">
+        <h4>Matched Rules: {{ matchedRules.length }}</h4>
+        <ul>
+            <li *ngFor="let id of matchedRules">
+                Rule {{ id }} |
+                <a [routerLink]="['/rules/question-answers', id, 'edit']">Edit</a>
+            </li>
+        </ul>
+    </div>
+
+    <table id="answers" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 10%">No.</th>
+                <th class="text-center" style="width: 40%">Question</th>
+                <th class="text-center" style="width: 25%">Answer</th>
+                <th class="text-center" style="width: 25%">Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ans of qa.questionAnswers; index as i">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td>{{ getQuestion(ans.questionID) }}</td>
+                <td>
+                    <ul class="list-group">
+                        <li *ngFor="let a of ans.answers" class="list-group-item">
+                            {{ a.str }} | 
+                            <a [routerLink]="[a.id, 'edit']">
+                                Edit Tags
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+                <td>{{ getTags(ans.questionID) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

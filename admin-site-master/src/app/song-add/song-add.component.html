@@ -1,0 +1,105 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>Add Song</h2>
+
+    <form>
+        <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-4">
+                <input id="inputName" name="inputName" class="form-control" type="text"
+                       [(ngModel)]="song.name">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputArtist" class="col-sm-2 col-form-label">Artist</label>
+            <div class="col-sm-4">
+                <input id="inputArtist" name="inputArtist" class="form-control" type="text"
+                        [(ngModel)]="song.artist">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputLink" class="col-sm-2 col-form-label">Link</label>
+            <div class="col-sm-4">
+                <input id="inputLink" name="inputLink" class="form-control" type="text"
+                        [(ngModel)]="song.link">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputTempo" class="col-sm-2 col-form-label">Tempo</label>
+            <div class="col-sm-4">
+                <input id="inputTempo" name="inputTempo" class="form-control" type="number"
+                        [(ngModel)]="song.tempo">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selMode" class="col-sm-2 col-form-label">Mode</label>
+            <div class="col-sm-4">
+                <ng-select id="selMode" name="selMode" [items]="allModes" bindLabel="mode" 
+                           bindValue="id" [(ngModel)]="song.modeID">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selGenre" class="col-sm-2 col-form-label">Genre</label>
+            <div class="col-sm-4">
+                <ng-select id="selGenre" name="selGenre" [items]="allGenres" bindLabel="genre" 
+                           bindValue="id" [(ngModel)]="song.genreID">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputLength" class="col-sm-2 col-form-label">Length</label>
+            <div class="col-sm-4">
+                <input id="inputLength" name="inputLength" class="form-control" type="number"
+                        [(ngModel)]="song.length">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputYear" class="col-sm-2 col-form-label">Year</label>
+            <div class="col-sm-4">
+                <input id="inputYear" name="inputYear" class="form-control" type="number"
+                        [(ngModel)]="song.year">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selLyric" class="col-sm-2 col-form-label">Lyric Type</label>
+            <div class="col-sm-4">
+                <ng-select id="selLyric" name="selLyric" [items]="allLyrics" bindLabel="lyric" 
+                           bindValue="id" [(ngModel)]="song.lyricID">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selTags" class="col-sm-2 col-form-label">Tags</label>
+            <div class="col-sm-4">
+                <ng-select id="selTags" name="selTags" [items]="allTags" bindLabel="name"
+                           [multiple]="true" [(ngModel)]="songTags">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg btn-success mr-2" type="button" (click)="add()">
+                    Add
+                </button>
+                <a class="btn btn-lg btn-danger" role="button" [routerLink]="['../']">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+         role="alert" (click)="message = ''">{{ message }}</div>
+</div>

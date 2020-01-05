@@ -1,0 +1,49 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+    <h2>
+        {{ playlist.name }}<br>
+        <small class="text-muted">{{ playlist.description }}</small>
+    </h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary" [routerLink]="['/playlists']">Back to Playlists</a>
+    </p>
+
+    <table id="playlistSongs" class="table table-bordered table-hover" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 20%">Name</th>
+                <th class="text-center" style="width: 10%">Artist</th>
+                <th class="text-center" style="width: 5%">Link</th>
+                <th class="text-center" style="width: 7%">Tempo</th>
+                <th class="text-center" style="width: 8%">Mode</th>
+                <th class="text-center" style="width: 10%">Genre</th>
+                <th class="text-center" style="width: 5%">Length</th>
+                <th class="text-center" style="width: 5%">Year</th>
+                <th class="text-center" style="width: 5%">Lyric Type</th>
+                <th class="text-center" style="width: 20%">Tags</th>
+                <th class="text-center" style="width: 5%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let song of playlist.songs">
+                <td>{{ song.name }}</td>
+                <td>{{ song.artist }}</td>
+                <td><a *ngIf="song.link" href="{{ song.link }}">Link</a></td>
+                <td>{{ song.tempo }}</td>
+                <td>{{ getModeName(song.modeID) }}</td>
+                <td>{{ getGenreName(song.genreID) }}</td>
+                <td>{{ formatLength(song.length) }}</td>
+                <td>{{ song.year }}</td>
+                <td>{{ getLyricName(song.lyricID) }}</td>
+                <td>{{ getTags(song.id) }}</td>
+                <td>
+                    <a class="btn btn-primary" role="button" 
+                       [routerLink]="['/songs', song.id, 'edit']">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

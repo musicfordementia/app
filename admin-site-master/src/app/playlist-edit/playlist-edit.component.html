@@ -1,0 +1,132 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+   <h2>Editing Playlist {{ playlist.id }}</h2>
+
+   <form>
+        <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-4">
+                <input id="inputName" name="inputName" class="form-control" type="text"
+                       [(ngModel)]="playlist.name">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputDesc" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-4">
+                <input id="inputDesc" name="inputDesc" class="form-control" type="text"
+                       [(ngModel)]="playlist.description">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="selTags" class="col-sm-2 col-form-label">Tags</label>
+            <div class="col-sm-4">
+                <ng-select id="selTags" name="selTags" [items]="allTags" bindLabel="name"
+                           [multiple]="true" [(ngModel)]="playlistTags">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <button class="btn btn-lg btn-success mr-2" type="button" (click)="save()">
+                    Save
+                </button>
+                <button class="btn btn-lg btn-danger" type="button" (click)="cancel()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+   </form>
+
+   <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+        role="alert" (click)="message=''">
+        {{ message }}
+    </div>
+
+   <hr>
+
+   <section>
+       <h3>Songs to Add</h3>
+       <table id="songsToAdd" class="table table-bordered table-hover" style="width: 100%">
+           <thead>
+               <tr>
+                   <th class="text-center" style="width: 20%">Name</th>
+                   <th class="text-center" style="width: 10%">Artist</th>
+                   <th class="text-center" style="width: 5%">Link</th>
+                   <th class="text-center" style="width: 7%">Tempo</th>
+                   <th class="text-center" style="width: 8%">Mode</th>
+                   <th class="text-center" style="width: 10%">Genre</th>
+                   <th class="text-center" style="width: 5%">Length</th>
+                   <th class="text-center" style="width: 5%">Year</th>
+                   <th class="text-center" style="width: 5%">Lyric Type</th>
+                   <th class="text-center" style="width: 20%">Tags</th>
+                   <th class="text-center" style="width: 5%">Actions</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr *ngFor="let song of allSongs">
+                   <td>{{ song.name }}</td>
+                   <td>{{ song.artist }}</td>
+                   <td><a *ngIf="song.link" href="{{ song.link }}">Link</a></td>
+                   <td>{{ song.tempo }}</td>
+                   <td>{{ getModeName(song.modeID) }}</td>
+                   <td>{{ getGenreName(song.genreID) }}</td>
+                   <td>{{ formatLength(song.length) }}</td>
+                   <td>{{ song.year }}</td>
+                   <td>{{ getLyricName(song.lyricID) }}</td>
+                   <td>{{ getTags(song.id) }}</td>
+                   <td>
+                       <button class="btn btn-success" type="button" (click)="addSong(song)">
+                           Add
+                       </button>
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+   </section>
+
+   <hr>
+
+   <section>
+       <h3>Current Playlist Songs</h3>
+       <table id="playlistSongs" class="table table-bordered table-hover" style="width: 100%">
+           <thead>
+               <tr>
+                   <th class="text-center" style="width: 20%">Name</th>
+                   <th class="text-center" style="width: 10%">Artist</th>
+                   <th class="text-center" style="width: 5%">Link</th>
+                   <th class="text-center" style="width: 7%">Tempo</th>
+                   <th class="text-center" style="width: 8%">Mode</th>
+                   <th class="text-center" style="width: 10%">Genre</th>
+                   <th class="text-center" style="width: 5%">Length</th>
+                   <th class="text-center" style="width: 5%">Year</th>
+                   <th class="text-center" style="width: 5%">Lyric Type</th>
+                   <th class="text-center" style="width: 20%">Tags</th>
+                   <th class="text-center" style="width: 5%">Actions</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr *ngFor="let song of playlist.songs">
+                   <td>{{ song.name }}</td>
+                   <td>{{ song.artist }}</td>
+                   <td><a *ngIf="song.link" href="{{ song.link }}">Link</a></td>
+                   <td>{{ song.tempo }}</td>
+                   <td>{{ getModeName(song.modeID) }}</td>
+                   <td>{{ getGenreName(song.genreID) }}</td>
+                   <td>{{ formatLength(song.length) }}</td>
+                   <td>{{ song.year }}</td>
+                   <td>{{ getLyricName(song.lyricID) }}</td>
+                   <td>{{ getTags(song.id) }}</td>
+                   <td>
+                       <button class="btn btn-danger" type="button" (click)="deleteSong(song.id)">
+                           Delete
+                       </button>
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+   </section>
+</div>

@@ -1,0 +1,63 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">Error: {{ error }}</div>
+<div *ngIf="!error">
+	<h2>Questionnaires</h2>
+	<p>
+		<a class="btn btn-primary btn-lg" role="button" [routerLink]="['add']">Add Questionnaire</a>
+	</p>
+
+	<table id="questionnaires" class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="text-center" style="width: 10%">ID</th>
+				<th class="text-center" style="width: 50%">Name</th>
+				<th class="text-center" style="width: 20%">Type</th>
+				<th class="text-center" style="width: 20%">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<ng-container *ngFor="let questionnaire of questionnaires">
+				<tr *ngIf="!getSelectedQuestionnaire(questionnaire.id)">
+					<td style="width: 10%">{{ questionnaire.id }}</td>
+					<td style="width: 50%">{{ questionnaire.name }}</td>
+					<td style="width: 30%">{{ getTypeName(questionnaire.typeID) }}</td>
+					<td style="width: 10%">
+						<a class="btn btn-primary m-1" role="button" 
+							[routerLink]="[questionnaire.id, 'questions']">
+							Questions
+						</a>
+						<a class="btn btn-primary m-1" role="button" [routerLink]=""
+						   (click)="edit(questionnaire)">
+							Edit
+                        </a>
+                        
+                        <div *ngIf="messageMap.getMessage(questionnaire.id) as msg" 
+                             [className]="'alert ' + (messageMap.getSuccess(questionnaire.id) ? 'alert-success' : 'alert-danger')"
+                             role="alert" (click)="messageMap.clearMessage(questionnaire.id)">
+                            {{ msg }}
+                        </div>
+					</td>
+                </tr>
+                
+                <tr class="table-active" *ngIf="getSelectedQuestionnaire(questionnaire.id) as selQ">
+                    <td style="width: 10%">{{ selQ.id }}</td>
+					<td style="width: 50%">
+						<input [(ngModel)]="selQ.name" class="form-control" type="text">
+					</td>
+					<td style="width: 30%">
+						<ng-select [items]="questionnaireTypes" bindLabel="name" bindValue="id"
+								   [(ngModel)]="selQ.typeID">
+						</ng-select>
+					</td>
+                    <td style="width: 10%">
+                        <button class="btn btn-success m-1" type="button" (click)="save(selQ)">
+                            Save
+                        </button>
+                        <button class="btn btn-danger m-1" type="button" (click)="cancel(selQ.id)">
+                            Cancel
+                        </button>
+                    </td>
+                </tr>
+			</ng-container>
+		<tbody>
+	</table>
+</div>

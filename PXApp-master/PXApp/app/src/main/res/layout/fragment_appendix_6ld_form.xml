@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_marginBottom="10dp"
+                android:text="Date and Time :" />
+
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/btnChoose"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Choose date and time" />
+        </LinearLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/TextLabel"
+            android:hint="@string/mood_hint">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtMood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:ems="10"
+                android:layout_margin="30dp"
+                android:inputType="textMultiLine"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/TextLabel"
+            android:hint="@string/situation_hint">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtSituation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:ems="10"
+                android:layout_margin="30dp"
+                android:inputType="textMultiLine"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/songsQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textSize="25dp"
+            android:text="Songs played :" />
+
+        <LinearLayout
+            android:id="@+id/llSongs"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/TextLabel"
+            android:hint="@string/reaction_hint">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtReaction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:ems="10"
+                android:layout_margin="30dp"
+                android:inputType="textMultiLine"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/TextLabel"
+            android:hint="@string/comments_hint">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:ems="10"
+                android:layout_margin="30dp"
+                android:inputType="textMultiLine"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/submitEntry"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:textSize="@dimen/button_text_size"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>

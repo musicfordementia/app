@@ -1,0 +1,105 @@
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<div *ngIf="!error">
+    <h2>Playlist Rules</h2>
+
+    <p>
+        <a class="btn btn-lg btn-primary mr-2" role="button" [routerLink]="['playlists/add']">
+            Add
+        </a>
+
+        <button class="btn btn-lg btn-primary" type="button" data-toggle="collapse" 
+                data-target="#collapseRun" aria-expanded="false" aria-controls="collapse" 
+                [disabled]="isRunning">
+            Run Rules
+            <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+        </button>
+    </p>
+
+    <div id="collapseRun" class="collapse p-2 mb-2 border rounded">
+        <div class="alert alert-danger" role="alert">
+            Running rules will delete the selected user's playlists.
+        </div>
+
+        <form>
+            <div class="form-group row">
+                <label for="selUser" class="col-sm-2 col-form-label">User</label>
+                <div class="col-sm-4">
+                    <ng-select id="selUser" name="selUser" [items]="allUsers" bindLabel="email"
+                                [(ngModel)]="selectedUser">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div *ngIf="selectedUser" class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <a  class="btn btn-primary" role="button"
+                        [routerLink]="['/users', selectedUser.id, 'playlists']">
+                        Show Playlists
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <button class="btn btn-success mr-2" type="button" [disabled]="isRunning"
+                            (click)="runRules()">
+                        Run
+                        <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+                    </button>
+
+                    <button class="btn btn-danger mr-2" type="button" data-toggle="collapse" 
+                            data-target="#collapseRun" aria-expanded="false" aria-controls="collapse" 
+                            [disabled]="isRunning">
+                        Cancel
+                        <span *ngIf="isRunning" class="spinner-border spinner-border-sm mb-1"></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div *ngIf="message" [className]="'alert ' + (success ? 'alert-success' : 'alert-danger')" 
+                role="alert" (click)="message=''">
+            {{ message }}
+        </div>
+
+        <div *ngIf="matchedRules && matchedRules.length > 0">
+            <h4>Matched Rules: {{ matchedRules.length }}</h4>
+            <ul>
+                <li *ngFor="let id of matchedRules">
+                    Rule {{ id }} |
+                    <a [routerLink]="['/rules/playlists', id, 'edit']">Edit</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <table id="rules" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 10%">No.</th>
+                <th class="text-center" style="width: 20%">Target Tag</th>
+                <th class="text-center" style="width: 10%">Condition</th>
+                <th class="text-center" style="width: 10%">Count</th>
+                <th class="text-center" style="width: 45%">Tags</th>
+                <th class="text-center" style="width: 5%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rule of allRules; index as i">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td>{{ getTagName(rule.tagID) }}</td>
+                <td>{{ getOpName(rule.op) }}</td>
+                <td>{{ rule.count }}</td>
+                <td>{{ getRuleTags(rule.id) }}</td>
+                <td>
+                    <a class="btn btn-primary" role="button" 
+                       [routerLink]="['playlists', rule.id, 'edit']">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
