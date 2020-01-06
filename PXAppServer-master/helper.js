@@ -32,9 +32,9 @@ function validateSignup(input) {
         return 'Not all fields received';
     }
 
-    Object.keys(input).map(function(key, index) {
+    /*Object.keys(input).map(function(key, index) {
         if (input[key]) input[key] = input[key].trim();
-    });
+    });*/
 
     if (input.email.length == 0) {
         fields.push('email');
