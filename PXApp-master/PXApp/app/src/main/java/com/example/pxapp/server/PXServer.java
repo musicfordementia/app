@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class PXServer {
-    public static final String API_URL = //"http://192.168.1.83:3000/api/user/";
-                                      "https://ks1908.scem.westernsydney.edu.au/api/user/";
+    public static final String API_URL = "http://192.168.1.83:3000/api/user/";
+                                      //use 10.0.2.2:3000 instead to access node server through android emulator
     private static final String TAG = "PXServer";
     private static PXServer instance;
     private static Context ctx;
